@@ -1,0 +1,13 @@
+Halfman coding ---> O(nlogn)
+o/1 knapsack --> O(nw)
+Fractional knapsack ---> O(nlogn)
+Mergesort ---> O(nlogn)
+Quicksort --> O(nlogn) --. Best case
+              O(n^2) --> Worst case
+all to all ---> O(n^3)
+krushkals --> O(ElogV)
+prims ---> O((V+E) logV)
+BFS --> O(E+V)
+DFS ---> O(E+V)
+Dijkstra's --> O(v^2) --> adjcency matrix 
+               O(ElogV) ---> adjcency list
