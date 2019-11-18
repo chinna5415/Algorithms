@@ -11,3 +11,15 @@ BFS --> O(E+V)
 DFS ---> O(E+V)
 Dijkstra's --> O(v^2) --> adjcency matrix 
                O(ElogV) ---> adjcency list
+
+
+Limitations of FCFS Algorithm:
+1.Waiting time can be large if short requests wait behind the long ones.
+2.It is not suitable for time sharing systems where it is important that each user should get the CPU for an equal amount of time interval
+3.A proper mix of jobs is needed to achieve good results from FCFS scheduling
+
+
+Limitations of Round robin Algorithm :-
+1.Sometimes 2 processes may have the same priority, but one of them might get suspended in the middle of execution, as it works on first come first serve basis.
+2.If slicing time is too low, the processor output is reduced. More time is spent on context switching
+
