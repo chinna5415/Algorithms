@@ -135,10 +135,9 @@ void Node :: search(int ele, Linkedlist *head) {
 }
 
 void DISPLAY(Linkedlist *head) {
-	while (head != nullptr) {
-		cout << head->data << endl;
-		head = head->next;
-	}
+	if (head == nullptr) return;
+	cout << head->data << endl;
+	DISPLAY(head->next);
 }
 
 int main() {
