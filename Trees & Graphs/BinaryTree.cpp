@@ -35,11 +35,90 @@ class Tree {
 			}
 		} 
 		
+		Node *MIN(Node *min_) {
+			while (min_->left != nullptr)
+				min_ = min_->left;
+			return min_;
+		}
+		
+	 	void insert_node(Node *, int);
+	 	void Delete_node(Node *, int);
 		void PreOrder(Node *);
 		void InOrder(Node *);
 		void PostOrder(Node *);
 		
 };
+
+void Tree :: insert_node(Node *root, int ele) {
+	if (root->data > ele) {
+		if (root->left == nullptr) {
+			Node *new_linker = new Node(ele);
+			root->left = new_linker;
+			return;
+		} else {
+			insert_node(root->left, ele);
+		}
+	} else {
+		if (root->right == nullptr) {
+			Node *new_linker = new Node(ele);
+			root->right = new_linker;
+			return;
+		} else {
+			insert_node(root->right, ele);
+		}
+	}
+}
+
+void Tree :: Delete_node(Node *root, int ele) {
+	Node *temp = nullptr;
+	Node *ptr = root;
+	
+	while (ptr != nullptr and ptr->data != ele) {
+		temp = ptr;
+		
+		if (ele < ptr->data)
+			ptr = ptr->left;
+		else
+			ptr = ptr->right;
+	}
+	
+	if (ptr == nullptr)
+		return;
+		
+	if (ptr->left == nullptr and ptr->right == nullptr) {
+		if (ptr != root) {
+			if (temp->left == ptr)
+				temp->left = nullptr;
+			else
+				temp->right = nullptr;
+		} else {
+			root = nullptr;
+		}
+		
+		delete ptr;
+	} else if (ptr->left and ptr->right) {
+		Tree tree;
+		Node *minimum = tree.MIN(ptr->right);
+		int key = minimum->data;
+		
+		Delete_node(root, minimum->data);
+		
+		ptr->data = key;
+	} else {
+		Node *node = (ptr->left) ? ptr->left : ptr->right;
+		
+		if (ptr != root) {
+			if (ptr == temp->left)
+				temp->left = node;
+			else
+				temp->left = node;
+		} else {
+			root = node;
+		}
+		
+		delete ptr;
+	}
+}
 
 void Tree :: PreOrder(Node *root) {
 	/*
@@ -88,7 +167,9 @@ int main() {
 		cout << "\n2.PreOrder Traversal";
 		cout << "\n3.InOrder Traversal";
 		cout << "\n4.PostOrder Traversal";
-		cout << "\n5.EXIT";
+		cout << "\n5.Insert Node";
+		cout << "\n6.Delete Node";
+		cout << "\n7.EXIT";
 		cout << "\nchoose your option : ";
 		cin >> option;
 		
@@ -127,7 +208,23 @@ int main() {
 				break;
 			}
 			
-			case 5 : {
+			case 5: {
+				int ele;
+				cout << "Enter the inserted data : ";
+				cin >> ele;
+				mytree.insert_node(root, ele);
+				break;
+			}
+			
+			case 6: {
+				int ele;
+				cout << "Enter the ele to element : ";
+				cin >> ele;
+				mytree.Delete_node(root, ele);
+				break;
+			}
+			
+			case 7 : {
 				cout << "Bye!";
 				exit(0);
 			}
