@@ -41,6 +41,25 @@ class Tree {
 			return min_;
 		}
 		
+		void Mirror(Node *root) {
+			Node *temp;
+			if (root != nullptr) {
+				Mirror(root->left);
+				Mirror(root->right);
+				temp = root->left;
+				root->left = root->right;
+				root->right = temp;
+			}
+		}
+		
+		void delete_tree(Node *root) {
+			if (root != nullptr) {
+				delete_tree(root->left);
+				delete_tree(root->right);
+				delete root;
+			}
+		}
+		
 	 	void insert_node(Node *, int);
 	 	void Delete_node(Node *, int);
 		void PreOrder(Node *);
@@ -169,7 +188,9 @@ int main() {
 		cout << "\n4.PostOrder Traversal";
 		cout << "\n5.Insert Node";
 		cout << "\n6.Delete Node";
-		cout << "\n7.EXIT";
+		cout << "\n7.mirrorImage";
+		cout << "\n8.Delete Tree";
+		cout << "\n9.EXIT";
 		cout << "\nchoose your option : ";
 		cin >> option;
 		
@@ -224,7 +245,17 @@ int main() {
 				break;
 			}
 			
-			case 7 : {
+			case 7: {
+				mytree.Mirror(root);
+				break;
+			}
+			
+			case 8: {
+				mytree.delete_tree(root);
+				break;
+			}
+			
+			case 9: {
 				cout << "Bye!";
 				exit(0);
 			}
