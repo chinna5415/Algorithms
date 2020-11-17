@@ -1,1 +1,1 @@
-create database hospital_management;
+use hospital_management;
