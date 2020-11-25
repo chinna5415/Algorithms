@@ -1,28 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define or ||
-
-void operation(void);
+#include "chinna.h"
 
 int main() {
-    int op;
-
-    while (1) {
-        printf("\n1.Enter the data\n2.Exit\n");
-        printf("choose your option : ");
-        scanf("%d",&op);
-
-        switch (op) {
-            case 1 : operation();
-                break;
-            case 2 : exit(0);
-                break;
-            default: printf("input error");
-        }
-    }
-}
-
-void operation(void) {
     char data[20];
     printf("enter the data : ");
     scanf("%s",data);
@@ -35,8 +15,6 @@ void operation(void) {
                     state = 'A';
                 else if (data[i] == '0')
                     state = 'B';
-                else
-                    state = 'D';
                 break;
             }
 
@@ -45,8 +23,6 @@ void operation(void) {
                     state = 'A';
                 else if (data[i] == '0')
                     state = 'C';
-                else
-                    state = 'D';
                 break;
             }
 
@@ -55,8 +31,6 @@ void operation(void) {
                     state = 'E';
                 else if (data[i] == '0')
                     state = 'B';
-                else
-                    state = 'D';
                 break;
             }
 
@@ -65,8 +39,6 @@ void operation(void) {
                     state = 'E';
                 else if (data[i] == '0')
                     state = 'B';
-                else
-                    state = 'D';
                 break;
             }
 
@@ -75,8 +47,6 @@ void operation(void) {
                     state = 'A';
                 else if (data[i] == '0')
                     state = 'C';
-                else
-                    state = 'D';
                 break;
             }
 
