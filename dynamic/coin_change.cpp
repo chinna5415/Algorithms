@@ -16,6 +16,13 @@ using namespace std;
 	include -> y = t[i][j - coins[i-1]]
 
 	result -> x+y
+	
+		( or )
+		
+	vi dp(x+1, 0);
+	if (dp[j] == 0 || j + arr[i] > x) continue;
+		(dp[j+arr[i]] += dp[j]) %= MOD;
+
 */
 
 int coin_change(vector<int>& coins, int amt) {
